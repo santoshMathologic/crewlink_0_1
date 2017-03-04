@@ -1,0 +1,31 @@
+{
+  "name": "crewlink_0_1",
+  "authors": [
+    "santosh sahu"
+  ],
+  "description": "This is Simple Project With Fully Spring Security Implemented",
+  "main": "app.js",
+  "license": "MIT",
+  "homepage": "www.crewlink.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.2",
+    "bootstrap": "^3.3.7",
+    "base64": "^1.0.0",
+    "angular-base64": "^2.0.5",
+    "angular-ui-router": "^0.4.2",
+    "angular-route": "^1.6.2",
+    "oclazyload": "^1.1.0",
+    "angular-animate": "^1.6.2",
+    "angular-cookies": "^1.6.2",
+    "angular-resource": "^1.6.2",
+    "angular-sanitize": "^1.6.2"
+  }
+}
