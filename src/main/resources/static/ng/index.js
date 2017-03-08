@@ -38,6 +38,7 @@
 		                                    'ng/utils/UserService.js',
 		                                    'ng/utils/spinner.js',
 		                                    'ng/directives/dashboard/state/state.js',
+		                                    'ng/utils/passwordValidator.js'
 		                                 ]
 		                            }),
 		                            $ocLazyLoad.load(

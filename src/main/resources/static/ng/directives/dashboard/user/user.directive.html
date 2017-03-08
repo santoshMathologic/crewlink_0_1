@@ -36,6 +36,20 @@
 										is required.</span>
 								</span>
 							</div>
+							
+							<div class="form-group">
+								<label class="control-label">Re-Password </label> <input
+									type="password" name="repassword" ng-required="true"
+									class="form-control" placeholder="Enter Re Password"
+									ng-model="userdetails.repassword" password-match="userdetails.password"> <span
+									style="color: red"
+									>
+									
+									<span class="help-block" ng-show="userForm.repassword.$invalid">Bad field</span>
+									<!-- <span ng-show="userForm.repassword.$error.required">Password
+										is required.</span> -->
+								</span>
+							</div>
 
 
 							<div class="form-group">
