@@ -5,9 +5,9 @@ angular.module('crewLink_V_1_App')
         return {
             restrict: 'E',
             templateUrl: 'ng/directives/dashboard/dashboard.tmpl.html',
-            controller: function($scope, $state) {
+            controller: function($scope, $state,$location) {
 
-              
+            	
                 
             }
 

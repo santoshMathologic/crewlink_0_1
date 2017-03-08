@@ -3,7 +3,9 @@ angular.module('crewLink_V_1_App')
         return {
             restrict: 'E',
             templateUrl: 'ng/directives/home/home.tmpl.html',
-            controller: function($scope) {
+            controller: function($scope,$location) {
+            	
+            	
                 
                 
             }

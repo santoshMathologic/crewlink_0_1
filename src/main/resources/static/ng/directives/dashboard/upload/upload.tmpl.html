@@ -1,0 +1,23 @@
+
+<div class="container-fluid">
+<h1 class="page-header">File Uploading </h1>
+<form name="form">
+	<div flow-init="{target: '/api/v1/upload/uploadFile'}"
+     flow-files-submitted="$flow.upload()"
+     flow-file-success="$file.msg = $message">
+
+  <input type="file" flow-btn/>
+  Input OR Other element as upload button
+  <span class="btn" flow-btn>Upload File</span>
+
+  <table>
+    <tr ng-repeat="file in $flow.files">
+        <td>{{$index+1}}</td>
+        <td>{{file.name}}</td>
+        <td>{{file.msg}}</td>
+    </tr>
+  </table>
+</div>
+</form>
+
+</div>

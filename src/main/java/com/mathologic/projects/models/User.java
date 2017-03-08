@@ -20,11 +20,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-/**
- * Created by vivek on 25/9/15.
- */
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-@Table(name = "user")
+@Table
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -51,15 +50,16 @@ public class User implements Serializable {
 	private String telephoneNo;
 	private String extension;
 	private String employeeNo;
-/*
-	@NotNull
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Station station;*/
 
 	@NotNull
 	@ManyToOne	
 	private Role role;
 
+	
+	@OneToMany(mappedBy="user",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+	@JsonBackReference
+	private List<UserPlan> userPlans = new LinkedList<UserPlan>();
+	    
 	
 	
 	
@@ -180,6 +180,14 @@ public class User implements Serializable {
 
 	public void setActivationKey(String activationKey) {
 		this.activationKey = activationKey;
+	}
+
+	public List<UserPlan> getUserPlans() {
+		return userPlans;
+	}
+
+	public void setUserPlans(List<UserPlan> userPlans) {
+		this.userPlans = userPlans;
 	}
 
 		

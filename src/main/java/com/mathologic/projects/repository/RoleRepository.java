@@ -12,5 +12,6 @@ import com.mathologic.projects.models.Role;
 public interface RoleRepository extends JpaRepository<Role, Long>  {
 
 	Page<Role> findByName(@Param("name") String name,Pageable pagable);
+	Role findByNameContains(@Param("name")String name);
 
 }

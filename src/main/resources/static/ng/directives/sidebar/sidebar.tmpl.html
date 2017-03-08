@@ -1,0 +1,55 @@
+
+
+	
+	<div class="navbar-default sidebar" id="toggleSideBar" sidebar-directive="state"
+		role="navigation">
+		 <a id="navigation-toggle" style="text-decoration: none;margin-left: 234px;" ng-class="{ 'fa fa-chevron-right': state, 'fa fa-chevron-left': !state}" ng-click="toggleState()"></a>
+		<div class="sidebar-nav navbar-collapse">
+			<ul class="nav in" id="side-menu">
+			
+				
+				<li  ui-sref-active="active"><a ui-sref="dashboard.home"><i
+						class="fa fa-dashboard fa-fw"></i> Dash board</a></li>
+				<li  ui-sref-active="active"><a ui-sref="dashboard.user"><i
+						class="fa fa-user fa-fw"></i> Users<span></span></a></li>
+						
+						<li  ui-sref-active="active"><a ui-sref="dashboard.userPlan"><i
+						class="fa fa-user fa-fw"></i> UserPlan<span></span></a></li>
+						
+						
+
+				<li ng-class="{active: collapseVar==1}" ng-click="navCollapsed = !navCollapsed">{{dropDown}} <a href=""
+					ng-click="check(1)"><i class="fa fa-train fa-fw"></i> Train <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level" collapse="collapseVar!=1">
+						<li ui-sref-active="active"><a ui-sref="dashboard.trains">List
+								All Trains</a></li>
+						<li ui-sref-active="active"><a ui-sref="dashboard.trainTypes">Train
+								Types</a></li>
+					</ul>
+				</li>
+				
+				
+
+			</ul>
+			 
+          
+           <!-- <li ng-class="{active: false" ng-init="isCollapsed = true"  ng-click="isCollapsed = !isCollapsed">{{dropDown}} 
+					<i class="fa fa-train fa-fw"></i> Train <span
+						class="fa arrow"></span></a>
+            <ul class="nav nav-collapse" uib-collapse="isCollapsed">
+                <li><a href="#"><i class="icon-home icon-white"></i> Home</a>
+                </li>
+                <li><a href="#">Lessons</a>
+                </li>
+                <li><a href="#">Grades</a>
+                </li>
+            </ul>
+            </li> -->
+        	
+            
+        
+			
+			
+		</div>
+	</div>

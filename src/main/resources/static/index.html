@@ -2,26 +2,51 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>CrewLink : A Exl Techno Solution Product</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
+<link rel="shortcut icon" href="favicon.ico">
 
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="bower_components/angular-loading-bar/src/loading-bar.css"/>
+<link rel="stylesheet" href="bower_components/angucomplete-alt/angucomplete-alt.css"/>
+<link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.min.css"/>
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular-base64/angular-base64.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/oclazyload/dist/oclazyLoad.min.js"></script>
+<script src="bower_components/angular-loading-bar/src/loading-bar.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+
+<script src="bower_components/ng-flow/dist/ng-flow-standalone.min.js"></script>
+<script src="bower_components/ng-flow/dist/ng-flow.min.js"></script>
+<script src="bower_components/flow.js/dist/flow.min.js"></script>
+<script src="bower_components/angucomplete-alt/angucomplete-alt.js"></script>
+<script src="bower_components/AngularJS-Toaster/toaster.min.js"></script>
+
+
+
+
+
+
 
 <script src="ng/index.js"></script>
 
+<link rel="stylesheet" href="stylesheets/stylesheets.css" />
+<link rel="stylesheet" href="stylesheets/sidebar.css" />
+<link rel="stylesheet" href="stylesheets/sb-admin.css" />
+<link rel="stylesheet" href="stylesheets/state.css" />
+
 </head>
 <body>
-	<h1>index</h1>
 	<div ng-app="crewLink_V_1_App" style="overflow-x: hidden">
-
-		<div ui-view></div>
+	
+		<div ng-if="!stateIsLoading" ui-view class="fadein"></div> 
+		<section ng-if="stateIsLoading">Loading...</section>
 
 	</div>
 

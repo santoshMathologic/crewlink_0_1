@@ -11,13 +11,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 
 @Entity
-(name = "role")
+@Table
 public class Role {
 
 	
@@ -30,6 +32,7 @@ public class Role {
 	 private String name;
 	
 	 @OneToMany(mappedBy="role",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+	 @JsonBackReference
 	    private List<User> users = new LinkedList<User>();
 	    
 	public Role() {
