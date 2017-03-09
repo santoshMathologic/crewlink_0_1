@@ -6,7 +6,7 @@
 	<groupId>com.mathologic.projects</groupId>
 	<artifactId>crewlink</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>crewlink_0_1</name>
 	<description>This is  project for Spring Boot</description>
@@ -22,13 +22,17 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		 <start-class>com.mathologic.projects.Crewlink01Application</start-class>
 	</properties>
-
+	
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+		
+		
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
