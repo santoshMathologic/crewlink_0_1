@@ -3,11 +3,22 @@
  */
 package com.mathologic.projects.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.mathologic.projects.models.Role;
 import com.mathologic.projects.models.User;
+import com.mathologic.projects.repository.RoleRepository;
 import com.mathologic.projects.utils.SelectViewModel;
 import com.mathologic.projects.utils.SelectionDetails;
 
@@ -21,6 +32,9 @@ import com.mathologic.projects.utils.SelectionDetails;
 public class UserDaoImpl implements UserDao {
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	@Autowired
+	RoleRepository roleRepository;
 	
 	public UserDaoImpl() {
 
@@ -64,12 +78,15 @@ public class UserDaoImpl implements UserDao {
 
 
 	@Override
-	public boolean saveUser(Object object) {
+	@Transactional
+	public boolean saveUser(User object) {
 		boolean isSaved = Boolean.FALSE;
 		try {
 			if (object != null) {
-				
-				entityManager.persist( object );
+				String rolename = object.getRole().getName();
+				Role r = roleRepository.findByNameContains(rolename);
+				object.setRole(r);
+				entityManager.persist(object);
 				isSaved = Boolean.TRUE;
 				return isSaved;
 			}
@@ -81,6 +98,20 @@ public class UserDaoImpl implements UserDao {
 		isSaved = Boolean.FALSE;
 
 		return isSaved;
+	}
+
+	public Object getUniqueObject(String query){
+		Object uniqueObject = null;
+		try {
+			javax.persistence.Query obj = entityManager.createQuery(query);
+			if (obj != null) {
+				uniqueObject = obj;
+			}
+		}
+		catch (Exception e) {
+			System.out.println("" + e.getMessage());
+		}
+		return uniqueObject;
 	}
 	
 	

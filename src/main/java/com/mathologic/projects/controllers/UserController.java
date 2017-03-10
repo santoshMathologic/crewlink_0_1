@@ -74,8 +74,8 @@ public class UserController {
 			Role r = roleRepository.findByNameContains(rolename);
 			user.setRole(r);
 			
-			userRepository.save(user);
-			//manager.saveUser(user);
+			//userRepository.save(user);
+			manager.saveUser(user);
 			return "User save Successfully";
 		}
 	   

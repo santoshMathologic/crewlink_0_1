@@ -48,7 +48,7 @@ app.controller("UserCtrl",function($scope,$timeout, $state,UserService,$http){
 
 		$scope.getUser = function() {
 		$scope.isLoading = true;
-		var uri = "/api/v1/user/findByAllParams?username="
+		var uri = "api/v1/user/findByAllParams?username="
 				+ $scope.query.username + "&password=" + $scope.query.password
 
 		var userUri = "/api/v1/user/findByAllUserParams?username="

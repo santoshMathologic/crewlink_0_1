@@ -1,15 +1,13 @@
 package com.mathologic.projects.service;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mathologic.projects.dao.UserDao;
+import com.mathologic.projects.models.User;
 import com.mathologic.projects.utils.SelectViewModel;
 
 @Service
-
 public class UserServiceImpl implements UserService {
 
 	 @Autowired
@@ -30,6 +28,14 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public boolean saveUser(Object object) {
+	public boolean saveUser(User object) {
 		return dao.saveUser(object);
-	}}
+	}
+
+
+
+
+
+
+
+}
