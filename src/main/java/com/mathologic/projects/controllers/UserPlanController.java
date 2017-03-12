@@ -32,7 +32,12 @@ public class UserPlanController {
 	}
 
 	@RequestMapping(value = "/getPlan", method = RequestMethod.GET)
-	public Page<UserPlan> findByAllParams(@RequestParam(value = "planname", required = true)String planname) {
+	public Page<UserPlan> findByAllParams(
+			@RequestParam(value = "planname", required = true)String planname,
+			@RequestParam(value = "limit", required = true)int limit,
+			@RequestParam(value = "page", required = true)int page,
+			@RequestParam(value = "order", required = false)String order
+			) {
 		
 		 Page<UserPlan> userPlanList = userPlanRepository.findByAllUserPlanParams(planname, createPageRequest());
 		 return userPlanList;

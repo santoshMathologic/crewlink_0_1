@@ -5,25 +5,35 @@ angular.module('crewLink_V_1_App')
         return {
             restrict: 'E',
             templateUrl: 'ng/directives/dashboard/userPlan/userPlan.tmpl.html',
-            controller: function($scope, $state) {
+            controller: function($scope, $state,$http,$log) {
             	
-            	$scope.userPlans = [
-            	                    {
-            	                    	"name":"Plan004"
-            	                    		
-            	                    	
-            	                    },{
-            	                    	"name":"Plan004"
-            	                    },
-            	                    {
-            	                    	"name":"Plan004"
-            	                    },
-            	                    {
-            	                    	"name":"Plan004"
-            	                    }
-            	                    
-            	                    
-            	                    ]
+            	$scope.query = {
+            			limit:10,
+            			page:1,
+            			order:"planName",
+            			planname : ""
+            			
+            	}
+            	
+            	$scope.$watch('query',function(newVal,oldVal){
+            		if(newVal!=oldVal){
+            		}
+            		$scope.getUserPlan();
+            	},true);
+            	
+            	$scope.getUserPlan = function(){
+            		var url = "api/v1/userPlan/getPlan"
+            		$http.get(url,{params:$scope.query}).then(function success(res){
+            			console.log(res);
+            			$scope.userPlans   =  res.data.content;
+            			
+            		},function error(res){
+            			
+            		})	
+            		
+            	}
+            	$scope.getUserPlan();
+            	
 
               
                 

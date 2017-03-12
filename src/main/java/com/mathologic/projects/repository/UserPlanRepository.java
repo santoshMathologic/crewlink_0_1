@@ -13,7 +13,9 @@ import com.mathologic.projects.models.UserPlan;
 @RepositoryRestResource
 public interface UserPlanRepository extends JpaRepository<UserPlan, Long> {
 	
-	@Query("SELECT up from UserPlan as up WHERE (up.planName LIKE %:planname% OR :planname IS NULL OR planname is '%%')")
+	@Query("SELECT up from UserPlan as up WHERE (up.planName LIKE %:planname% OR :planname IS NULL OR :planname is '%%')")
 	Page<UserPlan> findByAllUserPlanParams(@Param("planname") String planname,Pageable pagable);
+	
+	
 
 }

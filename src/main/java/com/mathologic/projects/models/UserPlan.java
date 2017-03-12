@@ -1,5 +1,6 @@
 package com.mathologic.projects.models;
 
+
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -8,12 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.mathologic.projects.utils.LocalDateTimeDeserializer;
-import com.mathologic.projects.utils.LocalDateTimeSerializer;
+
 
 
 @Entity
@@ -28,13 +27,21 @@ public class UserPlan {
 	@Column(unique=true)
 	private String planName;
 	
-	@JsonSerialize(using = LocalDateTimeSerializer.class)
-	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	private LocalDateTime createdOn;
+	//@Column(unique=true,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	//@JsonSerialize(using = LocalDateTimeSerializer.class)
+	//@JsonDeserialize(using = LocalDateTimeDeSerializer.class)
+	
+	
+	//@Convert(converter = LocalDateConverter.class)
+	
+	private LocalDateTime createdOn  = LocalDateTime.now();
 	
 	
 	@ManyToOne
 	private User user;
+	
+	@Column(columnDefinition="BIT(1) DEFAULT b'0'")
+	private Boolean isDelete;
 	
 
 	public UserPlan() {
@@ -53,15 +60,7 @@ public class UserPlan {
 	}
 
 
-	public LocalDateTime getCreatedOn() {
-		return createdOn;
-	}
-
-
-	public void setCreatedOn(LocalDateTime createdOn) {
-		this.createdOn = createdOn;
-	}
-
+	
 
 	public String getPlanName() {
 		return planName;
@@ -80,6 +79,16 @@ public class UserPlan {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+
+	public Boolean getIsDelete() {
+		return isDelete;
+	}
+
+
+	public void setIsDelete(Boolean isDelete) {
+		this.isDelete = isDelete;
 	}
 
 }

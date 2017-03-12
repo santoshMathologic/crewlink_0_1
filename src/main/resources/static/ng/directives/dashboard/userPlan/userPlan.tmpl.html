@@ -21,13 +21,25 @@
 							<tr>
 								<th>S.No</th>
 								<th>Plan name</th>
+								<th>Date</th>
 								<th>Action</th>
 							</tr>
+							<tr>
+								<th></th>
+
+								<th><input type="text" ng-model="query.planname"
+									class="form-control input-sm"
+									ng-model-options="{ debounce: 1000}"></th>
+								<th></th>
+
+							</tr>
+
 						</thead>
 						<tbody>
 							<tr ng-repeat="userplan in userPlans">
 								<th>{{$index+1}}</th>
-								<th>{{userplan.name}}</th>
+								<th>{{userplan.planName}}</th>
+								<th>{{userplan.createdOn}}</th>
 								<th>
 									<button class="btn btn-xs btn-success"
 										ng-click="selectUserPlan(userplan)">Select</button>
