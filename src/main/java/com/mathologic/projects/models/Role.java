@@ -33,7 +33,7 @@ public class Role {
 	
 	 @OneToMany(mappedBy="role",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
 	 @JsonBackReference
-	    private List<User> users = new LinkedList<User>();
+	 private List<User> users = new LinkedList<User>();
 	    
 	public Role() {
 		// TODO Auto-generated constructor stub

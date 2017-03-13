@@ -1,6 +1,7 @@
 package com.mathologic.projects.models;
 
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -12,13 +13,24 @@ import javax.persistence.Table;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.mathologic.projects.utils.LocalDateTimeDeserializer;
+import com.mathologic.projects.utils.LocalDateTimeSerializer;
+
 
 
 
 @Entity
 @Table
-public class UserPlan {
+public class UserPlan implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -27,17 +39,17 @@ public class UserPlan {
 	@Column(unique=true)
 	private String planName;
 	
-	//@Column(unique=true,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	//@JsonSerialize(using = LocalDateTimeSerializer.class)
-	//@JsonDeserialize(using = LocalDateTimeDeSerializer.class)
 	
 	
-	//@Convert(converter = LocalDateConverter.class)
 	
+	@Column(unique=true,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
+	@JsonDeserialize(using = LocalDateTimeDeserializer.class)	
 	private LocalDateTime createdOn  = LocalDateTime.now();
 	
 	
 	@ManyToOne
+	@JsonBackReference
 	private User user;
 	
 	@Column(columnDefinition="BIT(1) DEFAULT b'0'")
