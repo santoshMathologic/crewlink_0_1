@@ -57,11 +57,11 @@ public class UserPlanController {
 			@RequestParam(value = "order", required = false)String order
 			) {
 		
-		 Page<UserPlan> userPlanList = userPlanRepository.findByAllUserPlanParams(planname, createPageRequest());
+		 Page<UserPlan> userPlanList = userPlanRepository.findByAllUserPlanParams(planname, createPageRequest(page,limit,order));
 		 return userPlanList;
 		
 	}
-	private Pageable createPageRequest() {
-	    return new PageRequest(0, 10, Sort.Direction.ASC, "planName");
+	private Pageable createPageRequest(int page,int limit,String order) {
+	    return new PageRequest(page, limit, Sort.Direction.ASC,order);
 	}
 }

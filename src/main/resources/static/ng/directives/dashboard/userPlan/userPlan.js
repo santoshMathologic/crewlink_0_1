@@ -9,7 +9,7 @@ angular.module('crewLink_V_1_App')
             	
             	$scope.query = {
             			limit:10,
-            			page:1,
+            			page:0,
             			order:"planName",
             			planname : ""
             			
@@ -24,7 +24,6 @@ angular.module('crewLink_V_1_App')
             	$scope.getUserPlan = function(){
             		var url = "api/v1/userPlan/getPlan"
             		$http.get(url,{params:$scope.query}).then(function success(res){
-            			console.log(res);
             			$scope.userPlans   =  res.data.content;
             			
             		},function error(res){
