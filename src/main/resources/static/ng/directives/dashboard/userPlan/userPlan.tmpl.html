@@ -41,7 +41,7 @@
 							<tr ng-repeat="userplan in userPlans">
 								<th>{{$index+1}}</th>
 								<th>{{userplan.planName}}</th>
-								<th>{{userplan.createdOn | date : 'shortDate'}}</th>
+								<th>{{userplan.createdOn}}</th>
 								<th>
 									<button class="btn btn-xs btn-success"
 										ng-click="selectUserPlan(userplan)">Select</button>

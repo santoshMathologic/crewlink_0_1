@@ -22,6 +22,8 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+
+
 @Entity
 @Table
 public class User implements Serializable {
@@ -62,6 +64,13 @@ public class User implements Serializable {
 	@JsonBackReference
 	private List<UserPlan> userPlans = new LinkedList<UserPlan>();
 	    
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinColumn(foreignKey = @ForeignKey(name="FK_USER_TRAIN"))
+	private List<Train> trains = new LinkedList<Train>();
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	private List<Station> Stations = new LinkedList<Station>();
 	
 	
 	
