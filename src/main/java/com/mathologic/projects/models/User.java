@@ -53,6 +53,7 @@ public class User implements Serializable {
 
 	@NotNull
 	@ManyToOne	
+	//@JoinColumn(name = "role")
 	//@JsonBackReference
 	private Role role;
 

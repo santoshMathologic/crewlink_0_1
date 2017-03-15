@@ -28,6 +28,7 @@ public class UserController {
 	UserRepository userRepository;
 	
 	@Autowired
+	
 	UserService manager;
 	@Autowired
 	RoleRepository roleRepository;

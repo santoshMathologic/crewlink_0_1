@@ -2,23 +2,30 @@ package com.mathologic.projects.models;
 
 
 import java.io.Serializable;
-import java.util.Date;
-
+import java.time.LocalDateTime;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.mathologic.projects.utils.LocalDateTimeConverter;
+import com.mathologic.projects.utils.LocalDateTimeDeserializer;
+import com.mathologic.projects.utils.LocalDateTimeSerializer;
 
 
 
 
 @Entity
 @Table
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class UserPlan implements Serializable {
 	
 	/**
@@ -31,21 +38,25 @@ public class UserPlan implements Serializable {
 	private Long id;
 	
 	@NotNull
+	
 	@Column(unique=true)
 	private String planName;
 	
 	
 	
 	
-	//@Column(unique=true,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(unique=true,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	//@JsonSerialize(using = LocalDateTimeSerializer.class)
 	//@JsonDeserialize(using = LocalDateTimeDeserializer.class)	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdOn;
+	//@Temporal(TemporalType.TIMESTAMP)
+	
+	@Convert(converter = LocalDateTimeConverter.class)
+	private LocalDateTime createdOn = LocalDateTime.now() ;
 	
 	
 	@ManyToOne
 	//@JsonBackReference
+	@JoinColumn(name = "user")
 	private User user;
 	
 	@Column(columnDefinition="BIT(1) DEFAULT b'0'")
@@ -100,13 +111,16 @@ public class UserPlan implements Serializable {
 	}
 
 
-	public Date getCreatedOn() {
+	public LocalDateTime getCreatedOn() {
 		return createdOn;
 	}
 
 
-	public void setCreatedOn(Date createdOn) {
+	public void setCreatedOn(LocalDateTime createdOn) {
 		this.createdOn = createdOn;
 	}
+
+
+	
 
 }

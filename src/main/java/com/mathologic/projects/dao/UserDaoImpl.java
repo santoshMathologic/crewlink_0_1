@@ -22,8 +22,6 @@ import com.mathologic.projects.repository.RoleRepository;
 import com.mathologic.projects.utils.SelectViewModel;
 import com.mathologic.projects.utils.SelectionDetails;
 
-
-
 /**
  * @author SANTOSH
  *
@@ -32,50 +30,41 @@ import com.mathologic.projects.utils.SelectionDetails;
 public class UserDaoImpl implements UserDao {
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@Autowired
 	RoleRepository roleRepository;
-	
+
 	public UserDaoImpl() {
 
 	}
 
-	
-
 	@Override
 	public SelectViewModel findUser(String username, String password, String sort, Long page, Long size) {
-		
-		
-		String q = "SELECT u from User u where (u.username LIKE :username OR :username IS NULL) AND (u.password LIKE :password OR :password IS NULL)";
-		 
-		javax.persistence.Query query  =  entityManager.createQuery(q);
-		 query.setParameter("username", (username != null) ? "%" + username + "%" : null);
-		 query.setParameter("password", (password!=null) ? "%" + password + "%" : null);
-			
-			query.setFirstResult(page.intValue());
-			query.setMaxResults(size.intValue());
-			
-			 
 
-			 
-			Long totalElements = (long) query.getResultList().size();
-		 	Long startIndex = page * size;
-			Long totalPages = totalElements / size;
-			Long currentPage = page;
-			String baseItemRestUri = "/api/v1/user/";
-		 
-			SelectViewModel result = new SelectViewModel(User.class,
-					new SelectionDetails(totalElements, startIndex, currentPage,
-							totalPages, baseItemRestUri), null);
-			try {
-				result.setData(query.getResultList());
-			} catch (Exception ex) {
-				System.out.println("ERROR in QUERY: " + ex.getMessage());
-			}
-			return result;	
+		String q = "SELECT U from User U where (U.username LIKE :username OR :username IS NULL) AND (U.password LIKE :password OR :password IS NULL)";
+
+		javax.persistence.Query query = entityManager.createQuery(q);
+		query.setParameter("username", (username != null) ? "%" + username + "%" : null);
+		query.setParameter("password", (password != null) ? "%" + password + "%" : null);
+
+		query.setFirstResult(page.intValue());
+		query.setMaxResults(size.intValue());
+
+		Long totalElements = (long) query.getResultList().size();
+		Long startIndex = page * size;
+		Long totalPages = totalElements / size;
+		Long currentPage = page;
+		String baseItemRestUri = "/api/v1/user/";
+
+		SelectViewModel result = new SelectViewModel(User.class,
+				new SelectionDetails(totalElements, startIndex, currentPage, totalPages, baseItemRestUri), null);
+		try {
+			result.setData(query.getResultList());
+		} catch (Exception ex) {
+			System.out.println("ERROR in QUERY: " + ex.getMessage());
+		}
+		return result;
 	}
-
-
 
 	@Override
 	@Transactional
@@ -100,23 +89,17 @@ public class UserDaoImpl implements UserDao {
 		return isSaved;
 	}
 
-	public Object getUniqueObject(String query){
+	public Object getUniqueObject(String query) {
 		Object uniqueObject = null;
 		try {
 			javax.persistence.Query obj = entityManager.createQuery(query);
 			if (obj != null) {
 				uniqueObject = obj;
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("" + e.getMessage());
 		}
 		return uniqueObject;
 	}
-	
-	
 
 }
-
-
-
