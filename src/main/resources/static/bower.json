@@ -34,6 +34,7 @@
     "ng-file-upload-shim": "^12.2.13",
     "ng-flow": "~2",
     "angucomplete-alt": "^3.0.0",
-    "AngularJS-Toaster": "^2.1.0"
+    "AngularJS-Toaster": "^2.1.0",
+    "angular-smart-table": "^2.1.8"
   }
 }
