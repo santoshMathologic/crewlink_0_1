@@ -98,47 +98,27 @@ app.controller("UserCtrl",function($scope,$timeout, $state,UserService,$http){
 		
 	}
 	
-	$scope.callServer = function callServer(tableState) {
-		
-		console.log(tableState);
-		
-		var pagination = tableState.pagination;
-	    var start = pagination.start || 0;     // This is NOT the page number, but the index of item in the list that you want to use to display the table.
-	    var number = pagination.number || 10;  // Number of entries showed per page.
-	    
-	    var sort = (tableState.sort.predicate)?tableState.sort.predicate:"";
-		var sortDir = (tableState.sort.reverse)?"asc":"desc";
-		var searchParams = "";
-		if(tableState.search.predicateObject){	
-			for(var searchItem in tableState.search.predicateObject){
-				
-				searchParams = tableState.search.predicateObject[searchItem];		
-				
-			}
-		}
-		
-		//var call = "/api/v1/user/findByAllUserParams";
-		
-	    var userUri = "/api/v1/user/findByAllParams?username="
-			+ searchParams + "&password=" + $scope.query.password
-			+ "&sort=" + $scope.query.sort + "&page=" + $scope.query.page
-			+ "&size=" + $scope.query.size
-	$http.get(userUri).then(function success(response) {
-		
-		$scope.resultObj  = response.data.content;
-		tableState.pagination.numberOfPages = response.data.totalPages;
-		$scope.resultObj.tableState = tableState;
+	
 
-		$timeout(function(res) {
-			$scope.isLoading = false;
-		}, 500)
+	var baseUrl = "api/v1/user/findByAllParams?username="
+		+ $scope.query.username + "&password=" + $scope.query.password
+	var url = "api/v1/user/findByAllParams";
+	$scope.callServer = new CallServerFetch(url,$http,
+			
+			function callBackBefore(responseobj){	        // Before processing this is called
+		  			$scope.isLoading = true;
+	  		},
+			function callBackAfter(resultObj){			// After processing this is called
+				  $scope.usersList = resultObj.data.content;
+				  $scope.isLoading = false;
+			  },
+			  function callBackAfterError(responseObj){
+				  
+			  }
+			
+	);
+	
 
-	}, function error(resp) {
-
-	});
-		
-		
-	}
 
 	
 	
