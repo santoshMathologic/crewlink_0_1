@@ -1,7 +1,10 @@
 package com.mathologic.projects.controllers;
 
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -36,22 +39,21 @@ public class UserController {
 	public UserController() {
 	}
 	
-/*	@RequestMapping(value="/findByAllParams", method = RequestMethod.GET )
+@RequestMapping(value="/findByAllParams", method = RequestMethod.GET )
 	public Page<User> findByAllParams(
 			@PathParam("username")String username,
 			@PathParam("password")String password
 			) 
 	{
 		
-		manager.findUser(username,password);
-		// return userRepository.findByUsernameOrMobileNo(username,mobNo, createPageRequest());
+	
 		return userRepository.findByAllUserParams(username,password,createPageRequest());
-	}*/
+	}
 	private Pageable createPageRequest() {
 	    return new PageRequest(0, 10, Sort.Direction.ASC, "username");
 	}
 	
-	@RequestMapping(value="/findByAllUserParams", method = RequestMethod.GET )
+	/*@RequestMapping(value="/findByAllUserParams", method = RequestMethod.GET )
 	public SelectViewModel findByAllUserParams(
 			@RequestParam(value = "username", required = true) String username,
 			@RequestParam(value = "password", required = true) String password,
@@ -65,7 +67,7 @@ public class UserController {
 		return  manager.findUser(username,password,sort,page,size);
 	   }
 	
-
+*/
 	@RequestMapping(value="/saveUser", method = RequestMethod.POST)
 	public @ResponseBody String saveUser(@RequestBody User user){
 		
