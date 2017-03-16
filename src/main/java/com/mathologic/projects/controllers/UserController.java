@@ -41,8 +41,8 @@ public class UserController {
 	
 @RequestMapping(value="/findByAllParams", method = RequestMethod.GET )
 	public Page<User> findByAllParams(
-			@PathParam("username")String username,
-			@PathParam("password")String password
+			@RequestParam(value = "username", required = false) String username,
+			@RequestParam(value = "password", required = false) String password
 			) 
 	{
 		
