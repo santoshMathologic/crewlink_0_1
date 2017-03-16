@@ -31,9 +31,27 @@ var CallServerFetch = function(url,httpProvider,callBackBefore,callBackAfter,cal
 		var sortDir = (tableState.sort.reverse)?"asc":"desc";
 		var searchParams = "";
 		
+		  if(this.baseUrl.indexOf("?")==-1){
+			  searchParams = "?";
+		  }
+		  
+		  if(tableState.search.predicateObject){
+			  for(searchItem in tableState.search.predicateObject){
+				  var re = new RegExp(searchItem+"=(\w+)","g");
+					if(searchParams.search(re)!=-1){
+						searchParams = searchParams.replace(re, searchItem+'='+tableState.search.predicateObject[searchItem]+'&');
+					}else{
+						searchParams += searchItem+"=" +tableState.search.predicateObject[searchItem]+"&";
+					}
+				}
+				  
+		  }
 		
+		  var 	call = this.baseUrl + searchParams;
+		  		call = call.concat('page='+page+'&');
+		  		call = call.concat('limit='+size);
 	
-		httpProvider.get(this.baseUrl).then(function successFunction(response){
+		httpProvider.get(call).then(function successFunction(response){
 			
 			this.callBackAfter(response);
 			

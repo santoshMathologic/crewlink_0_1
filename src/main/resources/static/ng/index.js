@@ -39,7 +39,8 @@
 		                                    'ng/utils/spinner.js',
 		                                    'ng/directives/dashboard/state/state.js',
 		                                    'ng/utils/passwordValidator.js',
-		                                    'ng/utils/callServerFetch.js'
+		                                    'ng/utils/callServerFetch.js',
+		                                    'ng/directives/pagination/pageSelect.directive.js'
 		                                 ]
 		                            }),
 		                            $ocLazyLoad.load(

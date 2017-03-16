@@ -6,18 +6,19 @@
 			<div class="col-lg-4">
 				<h3>User</h3>
 			</div>
-		</div>	
+		</div>
 	</div>
 
 
 	<div class="col-lg-12">
-	<div style="color:red;text-align:center" ng-if="userList.length==0">No Records Found</div>
-	<spinner enable="isLoading" clr="black" align="center" dimensions="40"></spinner>
+		<div style="color: red; text-align: center"
+			ng-if="usersList.length==0">No Records Found</div>
+		<spinner enable="isLoading" clr="black" align="center" dimensions="40"></spinner>
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				User List
-				
-			
+
+
 
 				<div class="input-group pull-right">
 					<div class="form-group">
@@ -34,102 +35,105 @@
 
 			</div>
 			<div class="panel-body">
-			
-				
-				<div class="smart-table-container">
-				<table class="table table-striped table-condensed" st-pipe="callServer.processFetch" st-table="usersList">
-				
-			
-					<thead>
-						<tr>
-							<th>SlNO</th>
-							<th st-sort="UserName">UserName</th>
-							<th>FirstName</th>
-							<th>LastName</th>
-							<th>Email</th>
-							<th>EmpNo</th>
-							<th>MobileNo</th>
-							<th>Password</th>
-							<th>role</th>
-							<th>Tele</th>
-							<th>Active</th>
-							<th>Action</th>
-						</tr>
-						<tr>
-							<th></th>
-							<th><input type="text" ng-model="query.username" st-search="username"
-								class="form-control input-sm"
-								ng-model-options="{ debounce: 1000}"></th>
-							<th><input type="text" ng-model="query.firstName" st-search="firstName"
-								class="form-control input-sm"
-								ng-model-options="{ debounce: 1000}"></th>
-							<th><input type="text" st-search="lastName"
-								class="form-control input-sm"
-								ng-model-options="{ debounce: 1000}"></th>
-							<th><input type="text" st-search="email"
-								class="form-control input-sm"
-								ng-model-options="{ debounce: 1000}"></th>
-							<th><input type="text" st-search="empNo"
-								class="form-control input-sm"
-								ng-model-options="{ debounce: 1000}"></th>
-							<th><input type="text" st-search="mobileNo"
-								class="form-control input-sm"
-								ng-model-options="{ debounce: 1000}"></th>
-							<th><input type="text" st-search="password"
-								class="form-control input-sm"
-								ng-model-options="{ debounce: 1000 }"></th>
-								
-								<th><input type="text" st-search="role"
-								class="form-control input-sm"
-								ng-model-options="{ debounce: 1000 }"></th>
-								
-								<th></th>
-								<th>
-								
-								<select ng-model="selectedActive" ng-change="ActiveCheck()" class="form-control input-sm" ng-options="x for x in checkActive">
-								{{x.Active}}
-								</select>
-								
-								</th>
-						</tr>
 
-					</thead>
-					<tbody>
-						<tr ng-repeat="user in usersList" st-select-row="user" st-select-mode="single" >
-							<td>{{$index+1}}</td>
-							<td>{{user.username}}</td>
-							<td>{{user.firstName}}</td>
-							<td>{{user.lastName}}</td>
-							<td>{{user.email}}</td>
-							<td>{{user.employeeNo}}</td>
-							<td>{{user.mobileNo}}</td>
-							<td>{{user.password}}</td>
-							<td>{{user.role.name}}</td>
-							<td>{{user.telephoneNo}}</td>
-							<td>{{user.isActive}}</td>
-							<td>
-								<button class="btn btn-danger btn-xs fa fa-trash"></button>
-								<button class="btn btn-warning btn-xs fa fa-trash"></button>
-								<button class="btn btn-info btn-xs fa fa-info"></button>
-							</td>
-						</tr>
-					</tbody>
-					
-					<tfoot>
-	<tr>
-		<td class="text-center" st-pagination="" st-items-by-page="8" colspan="8">
-		</td>
-	</tr>
-	</tfoot>
-					
-				</table>
+
+				<div class="smart-table-container">
+					<table class="table table-striped table-condensed"
+						st-pipe="callServer.processFetch" st-table="usersList">
+
+
+						<thead>
+							<tr>
+								<th>SlNO</th>
+								<th st-sort="UserName">UserName</th>
+								<th>FirstName</th>
+								<th>LastName</th>
+								<th>Email</th>
+								<th>EmpNo</th>
+								<th>MobileNo</th>
+								<th>Password</th>
+								<th>role</th>
+								<th>Tele</th>
+								<th>Active</th>
+								<th>Action</th>
+							</tr>
+							<tr>
+								<th></th>
+								<th><input type="text" ng-model="query.username"
+									st-search="username"  class="form-control input-sm"
+									ng-model-options="{ debounce: 1000}"></th>
+								<th><input type="text" ng-model="query.firstName"
+									st-search="firstName" class="form-control input-sm"
+									ng-model-options="{ debounce: 1000}"></th>
+								<th><input type="text" st-search="lastName"
+									class="form-control input-sm"
+									ng-model-options="{ debounce: 1000}"></th>
+								<th><input type="text" st-search="email"
+									class="form-control input-sm"
+									ng-model-options="{ debounce: 1000}"></th>
+								<th><input type="text" st-search="empNo"
+									class="form-control input-sm"
+									ng-model-options="{ debounce: 1000}"></th>
+								<th><input type="text" st-search="mobileNo"
+									class="form-control input-sm"
+									ng-model-options="{ debounce: 1000}"></th>
+								<th><input type="text" st-search="password"
+									class="form-control input-sm"
+									ng-model-options="{ debounce: 1000 }"></th>
+
+								<th><input type="text" st-search="role"
+									class="form-control input-sm"
+									ng-model-options="{ debounce: 1000 }"></th>
+
+								<th></th>
+								<th><select ng-model="selectedActive"
+									ng-change="ActiveCheck()" class="form-control input-sm"
+									ng-options="x for x in checkActive"> {{x.Active}}
+								</select></th>
+							</tr>
+
+						</thead>
+						<tbody>
+							<tr ng-repeat="user in usersList" st-select-row="user"
+								st-select-mode="single">
+								<td>{{$index+1}}</td>
+								<td>{{user.username}}</td>
+								<td>{{user.firstName}}</td>
+								<td>{{user.lastName}}</td>
+								<td>{{user.email}}</td>
+								<td>{{user.employeeNo}}</td>
+								<td>{{user.mobileNo}}</td>
+								<td>{{user.password}}</td>
+								<td>{{user.role.name}}</td>
+								<td>{{user.telephoneNo}}</td>
+								<td>{{user.isActive}}</td>
+								<td>
+									<button class="btn btn-danger btn-xs fa fa-trash"></button>
+									<button class="btn btn-warning btn-xs fa fa-trash"></button>
+									<button class="btn btn-info btn-xs fa fa-info"></button>
+								</td>
+							</tr>
+						</tbody>
+
+						<tfoot>
+							<tr>
+								<td colspan="10" style="text-align: center;">
+									<div st-items-by-page="itemsPerPage" st-pagination=""
+										st-template="ng/directives/pagination/pagination.custom.html"></div>
+								</td>
+
+							</tr>
+						</tfoot>
+
+					</table>
 				</div>
 
 			</div>
 		</div>
-		
+
 	</div>
 
-<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'position-class':'toast-bottom-right'}"></toaster-container>
+	<toaster-container
+		toaster-options="{'time-out': 3000, 'close-button':true, 'position-class':'toast-bottom-right'}"></toaster-container>
 
 </div>
