@@ -40,8 +40,42 @@ public class UploadController {
 		return "Upload files";
 	}
 
-	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-	public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile fileTrainDetails,
+	@RequestMapping(value = "/trainDetails", method = RequestMethod.POST)
+	public @ResponseBody String trainDetails(@RequestParam("file") MultipartFile fileTrainDetails,
+			HttpServletRequest request) {
+
+		Path currentRelativePath = Paths.get("");
+		String s = currentRelativePath.toAbsolutePath().toString();
+		String fullpath = s + "/uploads";
+
+		try {
+			File file = new File(fullpath);
+			file.mkdirs();
+			fullpath += "/" + fileTrainDetails.getOriginalFilename();
+			file = new File(fullpath);
+			byte[] bytes = fileTrainDetails.getBytes();
+			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(file));
+			stream.write(bytes);
+			stream.close();
+			
+			CSVReader reader = new CSVReader(new FileReader(fullpath),',','\'',1);
+		     for (String[] line; (line = reader.readNext()) != null;) {
+		     	trainDetailsCsvToDatabase.processingRecords(line);
+		    	   
+		     }
+
+
+
+		} catch (Exception e) {
+			System.out.println("" + e);
+		}
+
+		return "Upload files";
+	}
+	
+	
+	@RequestMapping(value = "/trainTimeTable", method = RequestMethod.POST)
+	public @ResponseBody String trainTimeTable(@RequestParam("file") MultipartFile fileTrainDetails,
 			HttpServletRequest request) {
 
 		Path currentRelativePath = Paths.get("");
