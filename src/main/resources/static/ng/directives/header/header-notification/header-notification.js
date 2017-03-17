@@ -13,6 +13,14 @@ angular.module('crewLink_V_1_App')
 	        restrict: 'E',
 	        replace: true,
 	        scope :{
+	        	color:'@'
+	        	
+	        },
+	        link:function(scope,element,attrs){
+	        	scope.$watch(attrs.headerNotification, function (newVal) {
+	        		element.css('background-color',scope.color);
+	        		element.css('border',"1px solid grey")
+	        	},true);
 	        	
 	        },
 	        controller:function($scope,$http,$window,$cookies){
