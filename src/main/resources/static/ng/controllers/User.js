@@ -109,7 +109,7 @@ app.controller("UserCtrl",function($scope,$timeout, $state,UserService,$http){
 		  			$scope.isLoading = true;
 	  		},
 			function callBackAfter(resultObj){			// After processing this is called
-				  $scope.usersList = resultObj.data.content;
+				  $scope.usersList = resultObj;
 				  $scope.isLoading = false;
 			  },
 			  function callBackAfterError(responseObj){

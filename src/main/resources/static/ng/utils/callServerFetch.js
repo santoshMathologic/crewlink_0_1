@@ -52,13 +52,15 @@ var CallServerFetch = function(url,httpProvider,callBackBefore,callBackAfter,cal
 		  		call = call.concat('limit='+size);
 	
 		httpProvider.get(call).then(function successFunction(response){
-			
-			this.callBackAfter(response);
+			  var resultObj = response.data.content
+			  tableState.pagination.numberOfPages = response.data.totalPages;
+			  resultObj.tableState = tableState;
+			  this.callBackAfter(resultObj);
 			
 		}.bind(this),
 		function errorResponse(response){
 			
-			this.callBackAfterError("jjjjjjjjj");
+			this.callBackAfterError("From CallBackAfter"+response);
 		
 		}.bind(this));
 		
