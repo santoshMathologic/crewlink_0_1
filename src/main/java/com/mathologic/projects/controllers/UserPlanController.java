@@ -51,7 +51,7 @@ public class UserPlanController {
 
 	@RequestMapping(value = "/getPlan", method = RequestMethod.GET)
 	public Page<UserPlan> findByAllParams(
-			@RequestParam(value = "planname", required = true)String planname,
+			@RequestParam(value = "planname", required = false)String planname,
 			@RequestParam(value = "limit", required = true)int limit,
 			@RequestParam(value = "page", required = true)int page,
 			@RequestParam(value = "order", required = false)String order
@@ -62,6 +62,6 @@ public class UserPlanController {
 		
 	}
 	private Pageable createPageRequest(int page,int limit,String order) {
-	    return new PageRequest(page, limit, Sort.Direction.ASC,order);
+	    return new PageRequest(page, limit, Sort.Direction.ASC,"planName");
 	}
 }
