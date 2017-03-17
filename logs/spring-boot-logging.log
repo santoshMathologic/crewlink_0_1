@@ -4298,3 +4298,11 @@ Caused by: java.io.IOException: UT000054: The maximum size 1048576 for an indivi
 2017-03-17 14:33:36.609  WARN 7212 --- [XNIO-21 task-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
 2017-03-17 14:33:39.225  WARN 7212 --- [XNIO-21 task-8] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
 2017-03-17 14:33:41.840  WARN 7212 --- [XNIO-21 task-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2017-03-17 14:39:52.820  WARN 7212 --- [XNIO-21 task-30] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
+2017-03-17 14:39:52.820  WARN 7212 --- [XNIO-21 task-30] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2017-03-17 14:39:59.139  WARN 7212 --- [XNIO-21 task-6] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
+2017-03-17 14:39:59.139  WARN 7212 --- [XNIO-21 task-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2017-03-17 14:40:01.277  WARN 7212 --- [XNIO-21 task-26] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
+2017-03-17 14:40:01.278  WARN 7212 --- [XNIO-21 task-28] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
+2017-03-17 14:40:04.236  WARN 7212 --- [XNIO-21 task-26] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2017-03-17 14:40:04.236  WARN 7212 --- [XNIO-21 task-28] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
