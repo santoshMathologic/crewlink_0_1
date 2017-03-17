@@ -9,12 +9,17 @@ import java.nio.file.Paths;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.mathologic.projects.Upload.utils.CommonCsvToDataBase;
+
 
 import com.opencsv.CSVReader;
 
@@ -25,6 +30,10 @@ public class UploadController {
 	public UploadController() {
 		
 	}
+	
+	 @Autowired
+	 @Qualifier("TrainDetails")
+	 CommonCsvToDataBase trainDetailsCsvToDatabase;
 
 	@RequestMapping(value = "/getInfo", method = RequestMethod.GET)
 	public String getUploadInfo() {
@@ -51,9 +60,8 @@ public class UploadController {
 			
 			CSVReader reader = new CSVReader(new FileReader(fullpath),',','\'',1);
 		     for (String[] line; (line = reader.readNext()) != null;) {
-		     	
-		    	   System.out.println(""+line[0]);
-		    	   System.out.println(""+line[1]);
+		     	trainDetailsCsvToDatabase.processingRecords(line);
+		    	   
 		     }
 
 
