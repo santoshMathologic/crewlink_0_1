@@ -6,6 +6,43 @@ var app = angular.module('crewLink_V_1_App');
 
 app.service("timeCalculationService",function(){
 	
+	var Days = ["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
+	
+	var calculateDifferenceBetweenTwoTimes = function(startTime, startDay, endTime, endDay){
+		
+		var tDuration = 0;
+		var dDay;
+		
+		var sTime 		= startTime.split(":");
+		var sHr 		= $.trim(sTime[0]); // regular Expresssion for Trim String the startTime
+		var sMin 		= $.trim(sTime[1]);// regular Expresssion for Trim String the startTime
+		
+		
+		var eTime  		= endTime.split(":");
+		var eHr 		= $.trim(eTime[0]); // regular Expresssion for Trim String the endTime
+		var eMin 		= $.trim(eTime[1]);// regular Expresssion for Trim String the endTime
+		
+		
+		var arrivalTime  	= parseInt(sHr * 60)+ parseInt(sMin);
+		var departureTime  	= parseInt(eHr * 60)+ parseInt(eMin);
+				
+		dDay =  startDay - endDay - 1;
+		
+		  if(dDay >= 0){
+			  tDuration = dDay * 24 * 60 + 24 * 60 - departureTime
+				+ arrivalTime;
+			  
+		  }else if(dDay == -1){
+			  tDuration = (arrivalTime - departureTime);
+		  }else{
+			  dDay = Days.length - 1 - startDay + endDay;
+			  tDuration = dDay * 24 * 60 + 24 * 60 - departureTime + arrivalTime;
+		  }
+		
+		return tDuration;
+		
+	};
+	
 	var timeToMinutes = function(time){
 		  time = time.split(":");
 		  return parseInt(time[0])*60+parseInt(time[1]);
@@ -59,7 +96,8 @@ app.service("timeCalculationService",function(){
 		MinutesToHoursAndMinutes : MinutesToHoursAndMinutes,
 		currentDateAndTime : currentDateAndTime,
 		hourAndMinutesToSeconds : hourAndMinutesToSeconds,
-		diff_two_times : diff_two_times
+		diff_two_times : diff_two_times,
+		calculateDifferenceBetweenTwoTimes : calculateDifferenceBetweenTwoTimes
 	}
 			
 			

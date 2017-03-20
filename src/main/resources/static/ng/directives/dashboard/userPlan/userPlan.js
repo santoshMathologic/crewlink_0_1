@@ -32,7 +32,8 @@ angular
 
 									);
 									
-									var g = timeCalculationService.diff_two_times("10:00",1,"12:45",1);
+									//var g = timeCalculationService.diff_two_times("10:00",1,"12:45",1);
+									var g = timeCalculationService.calculateDifferenceBetweenTwoTimes("14:00",1,"16:45",2);
 									
 									console.log(g);
 								}
