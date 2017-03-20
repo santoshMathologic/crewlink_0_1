@@ -45,3 +45,24 @@ function cal_differenceBetweenTwoTimes(startTime, startDay, endTime, endDay) {
 	return totalDuration;
 
 }
+/***
+ * This function in converted time to Minutes  (Eg : 10:30  like (10*60)+30 =  630)
+ * 
+ * @param time String
+ * @returns
+ */
+
+  function timeToMinutes(time){
+	  time = time.split(":");
+	  return parseInt(time[0])*60+parseInt(time[1]);
+  }
+  
+  function minutesToHours(minutes){
+	  
+	  var h = Math.floor(minutes / 60);
+	  var m = minutes % 60;
+	  h = h < 10 ? '0' + h : h;
+	  m = m < 10 ? '0' + m : m;
+	  return h + ':' + m;
+	  
+  }

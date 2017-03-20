@@ -18,8 +18,8 @@ angular.module('crewLink_V_1_App')
 	        },
 	        link:function(scope,element,attrs){
 	        	scope.$watch(attrs.headerNotification, function (newVal) {
-	        		element.css('background-color',scope.color);
-	        		element.css('border',"1px solid grey")
+	        		element.css('color',scope.color);
+	        		//element.css('border',"1px solid grey")
 	        	},true);
 	        	
 	        },

@@ -11,7 +11,7 @@ angular
 								restrict : 'E',
 								templateUrl : 'ng/directives/dashboard/userPlan/userPlan.tmpl.html',
 								controller : function($scope, $state, $http,
-										$log) {
+										$log,timeCalculationService) {
 									
 									$scope.isLoading = false;
 									$scope.userPlans = [];
@@ -32,8 +32,9 @@ angular
 
 									);
 									
-									cal_differenceBetweenTwoTimes("10:20",300,"12:00",600);
-
+									var g = timeCalculationService.diff_two_times("10:00",1,"12:45",1);
+									
+									console.log(g);
 								}
 
 							};

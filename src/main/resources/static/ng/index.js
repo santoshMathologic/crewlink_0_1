@@ -42,7 +42,8 @@
 		                                    'ng/utils/callServerFetch.js',
 		                                    'ng/directives/pagination/pageSelect.directive.js',
 		                                    'ng/utils/timeCalculator.js',
-		                                    'ng/models/genericModel.js'
+		                                    'ng/models/genericModel.js',
+		                                    'ng/directives/services/timeCalculator.js'
 		                                 ]
 		                            }),
 		                            $ocLazyLoad.load(
