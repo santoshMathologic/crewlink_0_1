@@ -40,7 +40,9 @@
 		                                    'ng/directives/dashboard/state/state.js',
 		                                    'ng/utils/passwordValidator.js',
 		                                    'ng/utils/callServerFetch.js',
-		                                    'ng/directives/pagination/pageSelect.directive.js'
+		                                    'ng/directives/pagination/pageSelect.directive.js',
+		                                    'ng/utils/timeCalculator.js',
+		                                    'ng/models/genericModel.js'
 		                                 ]
 		                            }),
 		                            $ocLazyLoad.load(

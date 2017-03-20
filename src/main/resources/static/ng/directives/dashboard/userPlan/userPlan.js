@@ -31,6 +31,8 @@ angular
 											}
 
 									);
+									
+									cal_differenceBetweenTwoTimes("10:20",300,"12:00",600);
 
 								}
 
