@@ -4584,3 +4584,8 @@ Using default security password: 76d2cb53-d936-4140-90d3-78a95739618c
 2017-03-17 15:10:36.227  INFO 7212 --- [XNIO-24 task-2] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 7 ms
 2017-03-17 15:11:04.893  WARN 7212 --- [XNIO-24 task-4] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
 2017-03-17 15:11:04.903  WARN 7212 --- [XNIO-24 task-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2017-03-17 15:12:07.805  INFO 7212 --- [RMI TCP Connection(2)-192.168.0.115] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2017-03-17 15:12:07.805  INFO 7212 --- [RMI TCP Connection(2)-192.168.0.115] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3eccfbfd: startup date [Fri Mar 17 15:10:17 IST 2017]; root of context hierarchy
+2017-03-17 15:12:08.891  INFO 7212 --- [RMI TCP Connection(2)-192.168.0.115] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-03-17 15:12:08.893  INFO 7212 --- [RMI TCP Connection(2)-192.168.0.115] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-03-17 15:12:08.989  INFO 7212 --- [RMI TCP Connection(2)-192.168.0.115] io.undertow.servlet                      : Destroying Spring FrameworkServlet 'dispatcherServlet'
