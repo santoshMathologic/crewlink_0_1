@@ -12,12 +12,11 @@ app.service("timeCalculationService",function(){
 		
 		var tDuration = 0;
 		var dDay;
-		
 		var sTime 		= startTime.split(":");
 		var sHr 		= $.trim(sTime[0]); // regular Expresssion for Trim String the startTime
 		var sMin 		= $.trim(sTime[1]);// regular Expresssion for Trim String the startTime
 		
-		
+
 		var eTime  		= endTime.split(":");
 		var eHr 		= $.trim(eTime[0]); // regular Expresssion for Trim String the endTime
 		var eMin 		= $.trim(eTime[1]);// regular Expresssion for Trim String the endTime
