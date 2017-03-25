@@ -7,51 +7,51 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.mathologic.projects.repository.UserRepository;
 import com.mathologic.projects.service.SSUserDetailsService;
 
-
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter  {
-	
-	@Autowired private UserRepository userRepository;
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception{
-		http
-        .authorizeRequests()
-        	.antMatchers("/bower_components/**").permitAll()
-        	.antMatchers("/login/**").permitAll()
-        	 .anyRequest().fullyAuthenticated()
-            .antMatchers("/admin/**").hasAuthority("ADMIN")
-            .antMatchers("/user/**").hasAuthority("USER")
-            .antMatchers("/api/v1/role/**").hasAuthority("ADMIN")
-            .antMatchers("/api/v1/currentUser/**").permitAll()
-            
-            .anyRequest().authenticated()
-        .and()
-        .formLogin().loginPage("/login/login.html").permitAll(true)
-        .and()
-        .logout().permitAll()
-        .and().httpBasic().and().csrf().disable()
-        .sessionManagement()
-        .maximumSessions(1)
-    ;
-}
-		
-	
-	
-	@Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-     	auth.userDetailsService(userDetailsServiceBean());
-    }
-	@Override
-    public UserDetailsService userDetailsServiceBean() throws Exception {
-        return new SSUserDetailsService(userRepository);
-    }
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/bower_components/**").permitAll().antMatchers("/login/**").permitAll()
+				.anyRequest().fullyAuthenticated().antMatchers("/admin/**").hasAuthority("ADMIN")
+				.antMatchers("/user/**").hasAuthority("USER").antMatchers("/api/v1/role/**").hasAuthority("ADMIN")
+				.antMatchers("/api/v1/currentUser/**").permitAll()
+
+				.anyRequest().authenticated().and().formLogin().loginPage("/login/login.html").permitAll(true).and()
+				.logout().permitAll().and().httpBasic().and().csrf().disable().sessionManagement().maximumSessions(1)
+				.expiredUrl("/login/index.html").maxSessionsPreventsLogin(false).sessionRegistry(sessionRegistry())
+
+		;
+	}
+
+	private SessionRegistry sessionRegistry() {
+		SessionRegistry sessionRegistry = new SessionRegistryImpl();
+		return sessionRegistry;
+
+	}
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().withUser("test").password("test").roles("USER");
+	}
+	/*
+	 * @Override public void configure(AuthenticationManagerBuilder auth) throws
+	 * Exception { auth.userDetailsService(userDetailsServiceBean()); }
+	 * 
+	 * @Override public UserDetailsService userDetailsServiceBean() throws
+	 * Exception { return new SSUserDetailsService(userRepository); }
+	 */
 
 }
