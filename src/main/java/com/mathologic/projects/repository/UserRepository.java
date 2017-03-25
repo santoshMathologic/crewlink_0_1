@@ -21,6 +21,9 @@ public interface UserRepository extends JpaRepository<User, Long>  {
 	
 	Page<User> findByUsernameOrMobileNo(@Param("username") String username,@Param("mobNo")String mobNo,Pageable pagable);
 	
+	User findByUsernameAndIsActive(@Param("username")String username,@Param("isActive")boolean isActive);
+	
+	
 	Page<User> findAll(Pageable pagable);
 	User findByUsername(@Param("username")String username);
 
