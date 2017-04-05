@@ -45,12 +45,7 @@ public class RoleController {
 		return r;
 
 	}
-	@RequestMapping(value="/findByAllParams",method = RequestMethod.GET)
-	public @ResponseBody Page<Role> findByAllParams(){
-		
-		 return roleRepository.findAll(createPageRequest()); 
-		
-	}
+	
 	private Pageable createPageRequest() {
 	    return new PageRequest(0, 10, Sort.Direction.ASC, "name");
 	}

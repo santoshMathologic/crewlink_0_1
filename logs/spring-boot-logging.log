@@ -5826,3 +5826,8 @@ Using default security password: 553c4f2a-b894-4cdb-aa5a-c5839a7ec0a7
 2017-03-25 18:18:40.619  INFO 9008 --- [XNIO-3 task-1] io.undertow.servlet                      : Initializing Spring FrameworkServlet 'dispatcherServlet'
 2017-03-25 18:18:40.622  INFO 9008 --- [XNIO-3 task-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
 2017-03-25 18:18:40.639  INFO 9008 --- [XNIO-3 task-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 17 ms
+2017-03-25 18:31:40.801  INFO 9008 --- [RMI TCP Connection(2)-192.168.0.116] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2017-03-25 18:31:40.816  INFO 9008 --- [RMI TCP Connection(2)-192.168.0.116] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@274ab446: startup date [Sat Mar 25 18:18:27 IST 2017]; root of context hierarchy
+2017-03-25 18:31:40.818  INFO 9008 --- [RMI TCP Connection(2)-192.168.0.116] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-03-25 18:31:40.818  INFO 9008 --- [RMI TCP Connection(2)-192.168.0.116] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-03-25 18:31:40.833  INFO 9008 --- [RMI TCP Connection(2)-192.168.0.116] io.undertow.servlet                      : Destroying Spring FrameworkServlet 'dispatcherServlet'
